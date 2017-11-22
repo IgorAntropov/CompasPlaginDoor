@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace KompasLib
 {
-    internal class DoorParameters
+    public class DoorParameters
     {
         /// <summary>
         ///     Переприсвоение
