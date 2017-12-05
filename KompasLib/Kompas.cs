@@ -93,14 +93,14 @@ namespace KompasLib
 
             floorKeyDifinition.EndEdit();
 
-            Extrude(doorParameters, doorPart, floorKeySketch, 7, (short) Direction_Type.dtNormal);
+            Extrude(doorParameters, doorPart, floorKeySketch, 15, (short) Direction_Type.dtNormal);
 
             //"основание ручки"->"ручка"
             ksEntity keyPlaneOffset = doorPart.NewEntity((short) Obj3dType.o3d_planeOffset);
             //создаем переменную смещенной поверхности 
             ksPlaneOffsetDefinition pod5 = keyPlaneOffset.GetDefinition(); // получаем указатель на её настройки 
             pod5.SetPlane(eyePlaneOffset); // ХУ плоскость установим как исходную, чтобы отталкиватся от неё 
-            pod5.offset = 7; //смещаемся на десять 
+            pod5.offset = 15; //смещаемся на 15 
             keyPlaneOffset.Create(); // создаем саму плоскость 
             ksEntity keySketch = doorPart.NewEntity((short) Obj3dType.o3d_sketch);
             //создаем переменную эскиза 
