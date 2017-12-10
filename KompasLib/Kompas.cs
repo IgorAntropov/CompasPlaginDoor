@@ -30,6 +30,8 @@ namespace KompasLib
             }
         }
 
+        
+
         /// <summary>
         ///     Создание двери
         /// </summary>
@@ -79,6 +81,50 @@ namespace KompasLib
 
             Cut(doorParameters, doorPart, eyeSketch, doorParameters.WeigthDoor);
 
+            //создание дверы для кошки
+            var X = -doorParameters.HeightDoor/2;
+            var Y = -doorParameters.WidthDoor/2 + 350;
+            var animalHoleHeight = 200;
+
+            if (doorParameters.IsOpen == true)
+            {
+                //дверка открытая
+                ksEntity animalDoorHoleSketch = doorPart.NewEntity((short)Obj3dType.o3d_sketch);
+                ksSketchDefinition animalDoorHoleSketchDefinition = animalDoorHoleSketch.GetDefinition();
+                animalDoorHoleSketchDefinition.SetPlane(eyePlaneOffset);
+                animalDoorHoleSketch.Create();
+
+                ksDocument2D animalDoorHole = animalDoorHoleSketchDefinition.BeginEdit();
+                DrawRectangle(doorParameters, animalDoorHole, X, Y, animalHoleHeight, animalHoleHeight, null);
+                animalDoorHoleSketchDefinition.EndEdit();
+                Cut(doorParameters, doorPart, animalDoorHoleSketch, doorParameters.WeigthDoor);
+
+                ksEntity animalDoorSketch = doorPart.NewEntity((short)Obj3dType.o3d_sketch);
+                ksSketchDefinition animalDoorSketchDefinition = animalDoorSketch.GetDefinition();
+                animalDoorSketchDefinition.SetPlane(eyePlaneOffset);
+                animalDoorSketch.Create();
+
+                ksDocument2D animalDoor = animalDoorSketchDefinition.BeginEdit();
+                DrawRectangle(doorParameters, animalDoor, X + animalHoleHeight , Y, animalHoleHeight / 10, animalHoleHeight, null);
+                animalDoorSketchDefinition.EndEdit();
+                Extrude(doorParameters, doorPart, animalDoorSketch, animalHoleHeight,
+                    (short)Direction_Type.dtNormal);
+            }
+            if (doorParameters.IsOpen == false)
+            {
+                //дверка закрытая
+                ksEntity animalDoorHoleSketch = doorPart.NewEntity((short)Obj3dType.o3d_sketch);
+                ksSketchDefinition animalDoorHoleSketchDefinition = animalDoorHoleSketch.GetDefinition();
+                animalDoorHoleSketchDefinition.SetPlane(eyePlaneOffset);
+                animalDoorHoleSketch.Create();
+
+                ksDocument2D animalDoorHole = animalDoorHoleSketchDefinition.BeginEdit();
+                DrawRectangle(doorParameters, animalDoorHole, X, Y, animalHoleHeight, animalHoleHeight, null);
+                animalDoorHoleSketchDefinition.EndEdit();
+                Cut(doorParameters, doorPart, animalDoorHoleSketch, 0.2);
+            }
+
+
             //"основание двери"->"основание ручки"
             ksEntity floorKeySketch = doorPart.NewEntity((short) Obj3dType.o3d_sketch);
             //создаем переменную эскиза 
@@ -109,11 +155,12 @@ namespace KompasLib
             keySketch.Create(); // создаем эскизa 
             ksDocument2D key = keySketchDefinition.BeginEdit();
 
-            DrawRectangle(doorParameters, key, doorParameters.YKey/2, doorParameters.WidthDoor - 430, 150, 26, -90);
+            DrawRectangle(doorParameters, key, doorParameters.YKey/2, doorParameters.WidthDoor - 430, 200, 26, -90);
             keySketchDefinition.EndEdit();
 
             Extrude(doorParameters, doorPart, keySketch, 5, (short) Direction_Type.dtNormal);
         }
+        
 
         /// <summary>
         ///     Рисование прямоугольника
@@ -147,7 +194,7 @@ namespace KompasLib
         /// <param name="part"></param>
         /// <param name="sketch"></param>
         /// <param name="heigth"></param>
-        private static void Cut(DoorParameters doorParameters, ksPart part, ksEntity sketch, int heigth)
+        private static void Cut(DoorParameters doorParameters, ksPart part, ksEntity sketch, double heigth)
         {
             ksEntity cutExtrude = part.NewEntity((short) Obj3dType.o3d_cutExtrusion);
             ksCutExtrusionDefinition cutextrDef = cutExtrude.GetDefinition();

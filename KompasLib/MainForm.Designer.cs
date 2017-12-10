@@ -41,14 +41,15 @@
             this.HHandle = new System.Windows.Forms.Label();
             this.HPeephole = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.openAnimalDoor = new System.Windows.Forms.RadioButton();
+            this.closeAnimalDoor = new System.Windows.Forms.RadioButton();
+            this.checkAnimal = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // PushToKompas
             // 
-            this.PushToKompas.Location = new System.Drawing.Point(76, 161);
+            this.PushToKompas.Location = new System.Drawing.Point(66, 252);
             this.PushToKompas.Name = "PushToKompas";
             this.PushToKompas.Size = new System.Drawing.Size(121, 31);
             this.PushToKompas.TabIndex = 1;
@@ -68,7 +69,7 @@
             "2100",
             "2150",
             "2200"});
-            this.HeightDoor.Location = new System.Drawing.Point(146, 12);
+            this.HeightDoor.Location = new System.Drawing.Point(143, 45);
             this.HeightDoor.Name = "HeightDoor";
             this.HeightDoor.Size = new System.Drawing.Size(121, 21);
             this.HeightDoor.TabIndex = 2;
@@ -85,7 +86,7 @@
             "850",
             "875",
             "900"});
-            this.WidthDoor.Location = new System.Drawing.Point(146, 39);
+            this.WidthDoor.Location = new System.Drawing.Point(143, 72);
             this.WidthDoor.Name = "WidthDoor";
             this.WidthDoor.Size = new System.Drawing.Size(121, 21);
             this.WidthDoor.TabIndex = 3;
@@ -103,7 +104,7 @@
             "80",
             "90",
             "100"});
-            this.ThicknessDoor.Location = new System.Drawing.Point(146, 66);
+            this.ThicknessDoor.Location = new System.Drawing.Point(143, 99);
             this.ThicknessDoor.Name = "ThicknessDoor";
             this.ThicknessDoor.Size = new System.Drawing.Size(121, 21);
             this.ThicknessDoor.TabIndex = 4;
@@ -134,7 +135,7 @@
             "700",
             "800",
             "900"});
-            this.DoorHandle.Location = new System.Drawing.Point(146, 93);
+            this.DoorHandle.Location = new System.Drawing.Point(143, 126);
             this.DoorHandle.Name = "DoorHandle";
             this.DoorHandle.Size = new System.Drawing.Size(121, 21);
             this.DoorHandle.TabIndex = 5;
@@ -154,7 +155,7 @@
             "1400",
             "1500",
             "1600"});
-            this.DoorPeephole.Location = new System.Drawing.Point(146, 120);
+            this.DoorPeephole.Location = new System.Drawing.Point(143, 153);
             this.DoorPeephole.Name = "DoorPeephole";
             this.DoorPeephole.Size = new System.Drawing.Size(121, 21);
             this.DoorPeephole.TabIndex = 6;
@@ -164,7 +165,7 @@
             // HDoor
             // 
             this.HDoor.AutoSize = true;
-            this.HDoor.Location = new System.Drawing.Point(11, 20);
+            this.HDoor.Location = new System.Drawing.Point(8, 53);
             this.HDoor.Name = "HDoor";
             this.HDoor.Size = new System.Drawing.Size(78, 13);
             this.HDoor.TabIndex = 7;
@@ -173,7 +174,7 @@
             // WDoor
             // 
             this.WDoor.AutoSize = true;
-            this.WDoor.Location = new System.Drawing.Point(10, 47);
+            this.WDoor.Location = new System.Drawing.Point(7, 80);
             this.WDoor.Name = "WDoor";
             this.WDoor.Size = new System.Drawing.Size(79, 13);
             this.WDoor.TabIndex = 8;
@@ -182,7 +183,7 @@
             // TDoor
             // 
             this.TDoor.AutoSize = true;
-            this.TDoor.Location = new System.Drawing.Point(10, 74);
+            this.TDoor.Location = new System.Drawing.Point(7, 107);
             this.TDoor.Name = "TDoor";
             this.TDoor.Size = new System.Drawing.Size(86, 13);
             this.TDoor.TabIndex = 9;
@@ -191,7 +192,7 @@
             // HHandle
             // 
             this.HHandle.AutoSize = true;
-            this.HHandle.Location = new System.Drawing.Point(10, 101);
+            this.HHandle.Location = new System.Drawing.Point(7, 134);
             this.HHandle.Name = "HHandle";
             this.HHandle.Size = new System.Drawing.Size(121, 13);
             this.HHandle.TabIndex = 10;
@@ -200,7 +201,7 @@
             // HPeephole
             // 
             this.HPeephole.AutoSize = true;
-            this.HPeephole.Location = new System.Drawing.Point(10, 128);
+            this.HPeephole.Location = new System.Drawing.Point(7, 161);
             this.HPeephole.Name = "HPeephole";
             this.HPeephole.Size = new System.Drawing.Size(133, 13);
             this.HPeephole.TabIndex = 11;
@@ -214,13 +215,38 @@
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
-            // pictureBox2
+            // openAnimalDoor
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(12, 205);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(254, 120);
-            this.pictureBox2.TabIndex = 13;
-            this.pictureBox2.TabStop = false;
+            this.openAnimalDoor.AutoSize = true;
+            this.openAnimalDoor.Location = new System.Drawing.Point(143, 188);
+            this.openAnimalDoor.Name = "openAnimalDoor";
+            this.openAnimalDoor.Size = new System.Drawing.Size(112, 17);
+            this.openAnimalDoor.TabIndex = 14;
+            this.openAnimalDoor.TabStop = true;
+            this.openAnimalDoor.Text = "В открытом виде";
+            this.openAnimalDoor.UseVisualStyleBackColor = true;
+            // 
+            // closeAnimalDoor
+            // 
+            this.closeAnimalDoor.AutoSize = true;
+            this.closeAnimalDoor.Location = new System.Drawing.Point(143, 211);
+            this.closeAnimalDoor.Name = "closeAnimalDoor";
+            this.closeAnimalDoor.Size = new System.Drawing.Size(113, 17);
+            this.closeAnimalDoor.TabIndex = 15;
+            this.closeAnimalDoor.TabStop = true;
+            this.closeAnimalDoor.Text = "В закрытом виде";
+            this.closeAnimalDoor.UseVisualStyleBackColor = true;
+            // 
+            // checkAnimal
+            // 
+            this.checkAnimal.AutoSize = true;
+            this.checkAnimal.Location = new System.Drawing.Point(10, 189);
+            this.checkAnimal.Name = "checkAnimal";
+            this.checkAnimal.Size = new System.Drawing.Size(115, 17);
+            this.checkAnimal.TabIndex = 16;
+            this.checkAnimal.Text = "Дверь для кошек";
+            this.checkAnimal.UseVisualStyleBackColor = true;
+            this.checkAnimal.CheckedChanged += new System.EventHandler(this.checkAnimal_CheckedChanged_1);
             // 
             // MainForm
             // 
@@ -229,7 +255,9 @@
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(530, 337);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.checkAnimal);
+            this.Controls.Add(this.closeAnimalDoor);
+            this.Controls.Add(this.openAnimalDoor);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.HPeephole);
             this.Controls.Add(this.HHandle);
@@ -252,7 +280,6 @@
             this.Text = "Бибилиотека \"Входная дверь\" для КОМПАС-3D v17";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -272,7 +299,9 @@
         private System.Windows.Forms.Label HHandle;
         private System.Windows.Forms.Label HPeephole;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        public System.Windows.Forms.RadioButton openAnimalDoor;
+        public System.Windows.Forms.RadioButton closeAnimalDoor;
+        public System.Windows.Forms.CheckBox checkAnimal;
     }
 }
 

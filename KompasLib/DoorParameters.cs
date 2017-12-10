@@ -13,13 +13,14 @@ namespace KompasLib
         /// <param name="weigthDoor"></param>
         /// <param name="yKey"></param>
         /// <param name="yEye"></param>
-        public DoorParameters(int heightDoor, int widthDoor, int weigthDoor, int yKey, int yEye)
+        public DoorParameters(int heightDoor, int widthDoor, int weigthDoor, int yKey, int yEye, bool? isOpen)
         {
             HeightDoor = heightDoor;
             WidthDoor = widthDoor;
             WeigthDoor = weigthDoor;
             YKey = yKey;
             YEye = yEye;
+            IsOpen = isOpen;
         }
 
 
@@ -119,5 +120,16 @@ namespace KompasLib
         ///     Валидация
         /// </summary>
         [Required] [Range(900, 1600)] private int _yEye;
+
+        private bool? _isOpen;
+
+        public bool? IsOpen
+        {
+            get { return _isOpen; }
+            set
+            {
+                _isOpen = value;
+            }
+        }
     }
 }

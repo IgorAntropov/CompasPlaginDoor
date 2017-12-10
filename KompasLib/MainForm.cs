@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Windows.Forms;
 
 namespace KompasLib
@@ -33,8 +34,10 @@ namespace KompasLib
         {
             pictureBox1.Load(
                 "C://Users//Igor' Antropov//Documents//Visual Studio 2015//Projects//ORSAPR//KompasLib//1.jpg");
-            pictureBox2.Load(
-                "C://Users//Igor' Antropov//Documents//Visual Studio 2015//Projects//ORSAPR//KompasLib//2.jpg");
+            openAnimalDoor.Enabled = false;
+            closeAnimalDoor.Enabled = false;
+            closeAnimalDoor.Checked = true;
+            checkAnimal.Checked = false;
             PushToKompas.Enabled = false;
         }
 
@@ -71,14 +74,31 @@ namespace KompasLib
             var weigthDoor = int.Parse(ThicknessDoor.Items[ThicknessDoor.SelectedIndex].ToString()); //толщина двери
             var yKey = int.Parse(DoorHandle.Items[DoorHandle.SelectedIndex].ToString()); //высота ручки
             var yEye = int.Parse(DoorPeephole.Items[DoorPeephole.SelectedIndex].ToString()); //высота глазка
+            bool? isOpen = null;
 
-            var door = new DoorParameters(heightDoor, widthDoor, weigthDoor, yKey, yEye);
+            if (checkAnimal.Checked)
+            {
+                
+                if (openAnimalDoor.Checked)
+                {
+                    isOpen = true;
+                }
+                if (closeAnimalDoor.Checked)
+                {
+                    isOpen = false;
+                }
+            }
+
+            var door = new DoorParameters(heightDoor, widthDoor, weigthDoor, yKey, yEye, isOpen);
 
             //Вызов классов
             if (_kompas3D.Kompas3D == null)
                 _kompas3D.RunKompas();
 
             _kompas3D.BuildDoor(door);
+
+            
+
         }
 
         /// <summary>
@@ -170,5 +190,20 @@ namespace KompasLib
                 throw new ArgumentException("Высота глазка не указана!");
             }
         }
+
+        private void checkAnimal_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (checkAnimal.Checked == true)
+            {
+                openAnimalDoor.Enabled = true;
+                closeAnimalDoor.Enabled = true;
+            }
+            else
+            {
+                openAnimalDoor.Enabled = false;
+                closeAnimalDoor.Enabled = false;
+            }
+        }
+        
     }
 }
