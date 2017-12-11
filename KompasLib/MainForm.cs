@@ -204,6 +204,14 @@ namespace KompasLib
                 closeAnimalDoor.Enabled = false;
             }
         }
-        
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            HeightDoor.SelectedIndex = 1;
+            WidthDoor.SelectedIndex = 1;
+            ThicknessDoor.SelectedIndex = 1;
+            DoorHandle.SelectedIndex = 1;
+            DoorPeephole.SelectedIndex = 1;
+        }
     }
 }

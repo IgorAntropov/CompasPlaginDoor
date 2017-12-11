@@ -44,6 +44,7 @@
             this.openAnimalDoor = new System.Windows.Forms.RadioButton();
             this.closeAnimalDoor = new System.Windows.Forms.RadioButton();
             this.checkAnimal = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -242,11 +243,21 @@
             this.checkAnimal.AutoSize = true;
             this.checkAnimal.Location = new System.Drawing.Point(10, 189);
             this.checkAnimal.Name = "checkAnimal";
-            this.checkAnimal.Size = new System.Drawing.Size(115, 17);
+            this.checkAnimal.Size = new System.Drawing.Size(113, 17);
             this.checkAnimal.TabIndex = 16;
-            this.checkAnimal.Text = "Дверь для кошек";
+            this.checkAnimal.Text = "Дверь для собак";
             this.checkAnimal.UseVisualStyleBackColor = true;
             this.checkAnimal.CheckedChanged += new System.EventHandler(this.checkAnimal_CheckedChanged_1);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(79, 298);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(91, 27);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "Demo";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MainForm
             // 
@@ -255,6 +266,7 @@
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(530, 337);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.checkAnimal);
             this.Controls.Add(this.closeAnimalDoor);
             this.Controls.Add(this.openAnimalDoor);
@@ -302,6 +314,7 @@
         public System.Windows.Forms.RadioButton openAnimalDoor;
         public System.Windows.Forms.RadioButton closeAnimalDoor;
         public System.Windows.Forms.CheckBox checkAnimal;
+        private System.Windows.Forms.Button button1;
     }
 }
 
