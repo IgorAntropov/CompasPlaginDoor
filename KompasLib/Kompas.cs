@@ -9,12 +9,15 @@ namespace KompasLib
     internal class Kompas
     {
         /// <summary>
-        ///     Конструктор
+        /// Конструктор
         /// </summary>
         public KompasObject Kompas3D => _kompas;
 
         public KompasObject _kompas;
 
+        /// <summary>
+        /// Запуск компаса
+        /// </summary>
         public void RunKompas()
         {
             if (_kompas == null)
@@ -30,20 +33,17 @@ namespace KompasLib
             }
         }
 
-        
-
         /// <summary>
-        ///     Создание двери
+        /// Создание двери
         /// </summary>
         /// <param name="doorParameters"></param>
         public void BuildDoor(DoorParameters doorParameters)
         {
             RunningKompas();
-            //создание документа в компасе
+
             ksDocument3D doc = _kompas.Document3D();
             doc.Create();
 
-            //определяем плоскость, создаем эскиз
             ksPart doorPart = doc.GetPart((short) Part_Type.pTop_Part);
             ksEntity planeXoY = doorPart.GetDefaultEntity((short) Obj3dType.o3d_planeXOY);
             ksEntity sketch = doorPart.NewEntity((short) Obj3dType.o3d_sketch);
@@ -52,44 +52,32 @@ namespace KompasLib
             sketch.Create();
             ksDocument2D topSketch = sd.BeginEdit();
 
-            //"основание двери"
             DrawRectangle(doorParameters, topSketch, -doorParameters.HeightDoor/2, -doorParameters.WidthDoor/2,
                 doorParameters.HeightDoor, doorParameters.WidthDoor,
                 null);
             sd.EndEdit();
             Extrude(doorParameters, doorPart, sketch, doorParameters.WeigthDoor, (short) Direction_Type.dtNormal);
 
-            //"основание двери"->"глазок"
             ksEntity eyePlaneOffset = doorPart.NewEntity((short) Obj3dType.o3d_planeOffset);
-            //создаем переменную смещенной поверхности 
             ksPlaneOffsetDefinition eyeDefinition = eyePlaneOffset.GetDefinition();
-            // получаем указатель на её настройки 
-            eyeDefinition.SetPlane(planeXoY); // ХУ плоскость установим как исходную, чтобы отталкиватся от неё 
-            eyeDefinition.offset = doorParameters.WeigthDoor; //смещаемся на десять 
-            eyePlaneOffset.Create(); // создаем саму плоскость 
+            eyeDefinition.SetPlane(planeXoY);
+            eyeDefinition.offset = doorParameters.WeigthDoor;
+            eyePlaneOffset.Create();
             ksEntity eyeSketch = doorPart.NewEntity((short) Obj3dType.o3d_sketch);
-            //создаем переменную эскиза 
-            ksSketchDefinition eyeSketchDefinition = eyeSketch.GetDefinition(); //получим указатель на параметры эскиза 
-            eyeSketchDefinition.SetPlane(eyePlaneOffset); //зададим плоскость на которой создаем эскиз 
-
-            eyeSketch.Create(); // создаем эскизa 
-
+            ksSketchDefinition eyeSketchDefinition = eyeSketch.GetDefinition();
+            eyeSketchDefinition.SetPlane(eyePlaneOffset);
+            eyeSketch.Create();
             ksDocument2D eye = eyeSketchDefinition.BeginEdit();
             eye.ksCircle(doorParameters.YEye/2, 0, 15, 1);
-
             eyeSketchDefinition.EndEdit();
-
             Cut(doorParameters, doorPart, eyeSketch, doorParameters.WeigthDoor);
 
-            //создание дверы для кошки
             var X = -doorParameters.HeightDoor/2;
             var Y = -doorParameters.WidthDoor/2 + 350;
             var animalHoleHeight = 200;
-
             if (doorParameters.IsOpen == true)
             {
-                //дверка открытая
-                ksEntity animalDoorHoleSketch = doorPart.NewEntity((short)Obj3dType.o3d_sketch);
+                ksEntity animalDoorHoleSketch = doorPart.NewEntity((short) Obj3dType.o3d_sketch);
                 ksSketchDefinition animalDoorHoleSketchDefinition = animalDoorHoleSketch.GetDefinition();
                 animalDoorHoleSketchDefinition.SetPlane(eyePlaneOffset);
                 animalDoorHoleSketch.Create();
@@ -99,21 +87,21 @@ namespace KompasLib
                 animalDoorHoleSketchDefinition.EndEdit();
                 Cut(doorParameters, doorPart, animalDoorHoleSketch, doorParameters.WeigthDoor);
 
-                ksEntity animalDoorSketch = doorPart.NewEntity((short)Obj3dType.o3d_sketch);
+                ksEntity animalDoorSketch = doorPart.NewEntity((short) Obj3dType.o3d_sketch);
                 ksSketchDefinition animalDoorSketchDefinition = animalDoorSketch.GetDefinition();
                 animalDoorSketchDefinition.SetPlane(eyePlaneOffset);
                 animalDoorSketch.Create();
 
                 ksDocument2D animalDoor = animalDoorSketchDefinition.BeginEdit();
-                DrawRectangle(doorParameters, animalDoor, X + animalHoleHeight , Y, animalHoleHeight / 10, animalHoleHeight, null);
+                DrawRectangle(doorParameters, animalDoor, X + animalHoleHeight, Y, animalHoleHeight/10, animalHoleHeight,
+                    null);
                 animalDoorSketchDefinition.EndEdit();
                 Extrude(doorParameters, doorPart, animalDoorSketch, animalHoleHeight,
-                    (short)Direction_Type.dtNormal);
+                    (short) Direction_Type.dtNormal);
             }
             if (doorParameters.IsOpen == false)
             {
-                //дверка закрытая
-                ksEntity animalDoorHoleSketch = doorPart.NewEntity((short)Obj3dType.o3d_sketch);
+                ksEntity animalDoorHoleSketch = doorPart.NewEntity((short) Obj3dType.o3d_sketch);
                 ksSketchDefinition animalDoorHoleSketchDefinition = animalDoorHoleSketch.GetDefinition();
                 animalDoorHoleSketchDefinition.SetPlane(eyePlaneOffset);
                 animalDoorHoleSketch.Create();
@@ -124,46 +112,33 @@ namespace KompasLib
                 Cut(doorParameters, doorPart, animalDoorHoleSketch, 0.2);
             }
 
-
-            //"основание двери"->"основание ручки"
             ksEntity floorKeySketch = doorPart.NewEntity((short) Obj3dType.o3d_sketch);
-            //создаем переменную эскиза 
             ksSketchDefinition floorKeyDifinition = floorKeySketch.GetDefinition();
-            //получим указатель на параметры эскиза 
-            floorKeyDifinition.SetPlane(eyePlaneOffset); //зададим плоскость на которой создаем эскиз 
-            floorKeySketch.Create(); // создаем эскизa 
-
+            floorKeyDifinition.SetPlane(eyePlaneOffset);
+            floorKeySketch.Create();
             ksDocument2D floorKey = floorKeyDifinition.BeginEdit();
             DrawRectangle(doorParameters, floorKey, doorParameters.YKey/2, doorParameters.WidthDoor - 470, 18, 18,
                 null);
-
             floorKeyDifinition.EndEdit();
-
             Extrude(doorParameters, doorPart, floorKeySketch, 25, (short) Direction_Type.dtNormal);
 
-            //"основание ручки"->"ручка"
             ksEntity keyPlaneOffset = doorPart.NewEntity((short) Obj3dType.o3d_planeOffset);
-            //создаем переменную смещенной поверхности 
-            ksPlaneOffsetDefinition pod5 = keyPlaneOffset.GetDefinition(); // получаем указатель на её настройки 
-            pod5.SetPlane(eyePlaneOffset); // ХУ плоскость установим как исходную, чтобы отталкиватся от неё 
-            pod5.offset = 25; //смещаемся на 25
-            keyPlaneOffset.Create(); // создаем саму плоскость 
+            ksPlaneOffsetDefinition pod5 = keyPlaneOffset.GetDefinition();
+            pod5.SetPlane(eyePlaneOffset);
+            pod5.offset = 25;
+            keyPlaneOffset.Create();
             ksEntity keySketch = doorPart.NewEntity((short) Obj3dType.o3d_sketch);
-            //создаем переменную эскиза 
-            ksSketchDefinition keySketchDefinition = keySketch.GetDefinition(); //получим указатель на параметры эскиза 
-            keySketchDefinition.SetPlane(keyPlaneOffset); //зададим плоскость на которой создаем эскиз 
-            keySketch.Create(); // создаем эскизa 
+            ksSketchDefinition keySketchDefinition = keySketch.GetDefinition();
+            keySketchDefinition.SetPlane(keyPlaneOffset);
+            keySketch.Create();
             ksDocument2D key = keySketchDefinition.BeginEdit();
-
             DrawRectangle(doorParameters, key, doorParameters.YKey/2, doorParameters.WidthDoor - 430, 200, 26, -90);
             keySketchDefinition.EndEdit();
-
             Extrude(doorParameters, doorPart, keySketch, 5, (short) Direction_Type.dtNormal);
         }
-        
 
         /// <summary>
-        ///     Рисование прямоугольника
+        /// Рисование прямоугольника
         /// </summary>
         /// <param name="doc2d"></param>
         /// <param name="xStart"></param>
@@ -180,16 +155,14 @@ namespace KompasLib
             param.y = yStart;
             param.width = width;
             param.height = height;
-
             if (ang != null)
                 param.ang = (double) ang;
-
             param.style = 1;
             doc2d.ksRectangle(param, 0);
         }
 
         /// <summary>
-        ///     Вырезание
+        /// Вырезание
         /// </summary>
         /// <param name="part"></param>
         /// <param name="sketch"></param>
@@ -206,7 +179,7 @@ namespace KompasLib
         }
 
         /// <summary>
-        ///     Выдавливание
+        /// Выдавливание
         /// </summary>
         /// <param name="part"></param>
         /// <param name="sketch"></param>
@@ -225,7 +198,7 @@ namespace KompasLib
         }
 
         /// <summary>
-        ///     Запуск в 1 окне
+        /// Запуск в 1 окне
         /// </summary>
         private void RunningKompas()
         {

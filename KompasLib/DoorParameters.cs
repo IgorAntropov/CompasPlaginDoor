@@ -22,8 +22,7 @@ namespace KompasLib
             YEye = yEye;
             IsOpen = isOpen;
         }
-
-
+        
         /// <summary>
         ///     Высота
         /// </summary>
@@ -126,10 +125,7 @@ namespace KompasLib
         public bool? IsOpen
         {
             get { return _isOpen; }
-            set
-            {
-                _isOpen = value;
-            }
+            set { _isOpen = value; }
         }
     }
 }

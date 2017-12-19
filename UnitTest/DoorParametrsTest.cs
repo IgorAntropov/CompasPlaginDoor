@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using KompasLib;
 using NUnit.Framework;
 
