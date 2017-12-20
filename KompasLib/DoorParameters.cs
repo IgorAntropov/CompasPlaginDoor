@@ -6,14 +6,16 @@ namespace KompasLib
     public class DoorParameters
     {
         /// <summary>
-        ///     Переприсвоение
+        /// Переприсвоение
         /// </summary>
-        /// <param name="heightDoor"></param>
-        /// <param name="widthDoor"></param>
         /// <param name="weigthDoor"></param>
         /// <param name="yKey"></param>
         /// <param name="yEye"></param>
-        public DoorParameters(int heightDoor, int widthDoor, int weigthDoor, int yKey, int yEye, bool? isOpen)
+        /// <param name="isOpen"></param>
+        /// <param name="heightDoor"></param>
+        /// <param name="widthDoor"></param>
+        public DoorParameters(int weigthDoor, int yKey,
+            int yEye, bool? isOpen, int heightDoor, int widthDoor)
         {
             HeightDoor = heightDoor;
             WidthDoor = widthDoor;
@@ -24,7 +26,7 @@ namespace KompasLib
         }
         
         /// <summary>
-        ///     Высота
+        /// Гет сет высоты + валидация
         /// </summary>
         public int HeightDoor
         {
@@ -32,18 +34,22 @@ namespace KompasLib
             private set
             {
                 if (value < 1900 || value > 2200)
-                    throw new ArgumentException("Высота двери должна быть от 1900 до 2200!");
+                {
+                    throw new ArgumentException("Высота двери " +
+                                                "должна быть от 1900 до 2200!");
+                }  
                 _heightDoor = value;
             }
         }
 
         /// <summary>
-        ///     Валидация
+        /// Валидация
         /// </summary>
-        [Required] [Range(1900, 2200)] private int _heightDoor;
+        [Required] [Range(1900, 2200)]
+        private int _heightDoor;
 
         /// <summary>
-        ///     Ширина
+        /// Гет сет ширины + валидация
         /// </summary>
         public int WidthDoor
         {
@@ -51,18 +57,22 @@ namespace KompasLib
             private set
             {
                 if (value < 800 || value > 900)
-                    throw new ArgumentException("Ширина двери должна быть от 800 до 900!");
+                {
+                    throw new ArgumentException("Ширина двери " +
+                                                "должна быть от 800 до 900!");
+                }
                 _widthDoor = value;
             }
         }
 
         /// <summary>
-        ///     Валидация
+        /// Валидация
         /// </summary>
-        [Required] [Range(800, 900)] private int _widthDoor;
+        [Required] [Range(800, 900)]
+        private int _widthDoor;
 
         /// <summary>
-        ///     Толщина
+        /// Гет сет толщины + валидация
         /// </summary>
         public int WeigthDoor
         {
@@ -70,18 +80,22 @@ namespace KompasLib
             private set
             {
                 if (value < 50 || value > 100)
-                    throw new ArgumentException("Толщина двери должна быть от 50 до 100!");
+                {
+                    throw new ArgumentException("Толщина двери " +
+                                                "должна быть от 50 до 100!");
+                }
                 _weigthDoor = value;
             }
         }
 
         /// <summary>
-        ///     Валидация
+        /// Валидация
         /// </summary>
-        [Required] [Range(50, 100)] private int _weigthDoor;
+        [Required] [Range(50, 100)]
+        private int _weigthDoor;
 
         /// <summary>
-        ///     Ручка
+        /// Гет сет ручки + валидация
         /// </summary>
         public int YKey
         {
@@ -90,19 +104,21 @@ namespace KompasLib
             {
                 if (value < 100 || value > 900)
                 {
-                    throw new ArgumentException("Высота ручки должна быть от 100 до 900!");
+                    throw new ArgumentException("Высота ручки " +
+                                                "должна быть от 100 до 900!");
                 }
                 _yKey = value;
             }
         }
 
         /// <summary>
-        ///     Валидация
+        /// Валидация
         /// </summary>
-        [Required] [Range(100, 900)] private int _yKey;
+        [Required] [Range(100, 900)]
+        private int _yKey;
 
         /// <summary>
-        ///     Глазок
+        /// Гет сет глазка + валидация
         /// </summary>
         public int YEye
         {
@@ -110,18 +126,28 @@ namespace KompasLib
             private set
             {
                 if (value < 900 || value > 1600)
-                    throw new ArgumentException("Высота глазка должна быть от 900 до 1600!");
+                {
+                    throw new ArgumentException("Высота глазка " +
+                                                "должна быть от 900 до 1600!");
+                }   
                 _yEye = value;
             }
         }
 
         /// <summary>
-        ///     Валидация
+        /// Валидация
         /// </summary>
-        [Required] [Range(900, 1600)] private int _yEye;
+        [Required] [Range(900, 1600)]
+        private int _yEye;
 
+        /// <summary>
+        /// Объект переменной заслонки
+        /// </summary>
         private bool? _isOpen;
 
+        /// <summary>
+        /// Гет сеттер переменной заслонки
+        /// </summary>
         public bool? IsOpen
         {
             get { return _isOpen; }

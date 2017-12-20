@@ -7,8 +7,14 @@ namespace KompasLib
 {
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// Объект компас
+        /// </summary>
         private readonly Kompas _kompas3D = new Kompas();
 
+        /// <summary>
+        /// Конструктор
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
@@ -17,10 +23,13 @@ namespace KompasLib
         /// <summary>
         /// Видимость кнопки "построить"
         /// </summary>
-        private void VisBut()
+        private void VisibleButton()
         {
-            if (doorHeight.SelectedIndex == -1 || doorWidth.SelectedIndex == -1 || doorThickness.SelectedIndex == -1 ||
-                doorHandle.SelectedIndex == -1 || doorPeephole.SelectedIndex == -1)
+            if (doorHeight.SelectedIndex == -1
+                || doorWidth.SelectedIndex == -1
+                || doorThickness.SelectedIndex == -1
+                || doorHandle.SelectedIndex == -1
+                || doorPeephole.SelectedIndex == -1)
             {
                 pushToKompas.Enabled = false;
             }
@@ -28,32 +37,6 @@ namespace KompasLib
             {
                 pushToKompas.Enabled = true;
             }
-        }
-
-
-        private void WidthDoor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            VisBut();
-        }
-
-        private void HeightDoor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            VisBut();
-        }
-
-        private void DoorPeephole_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            VisBut();
-        }
-
-        private void DoorHandle_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            VisBut();
-        }
-
-        private void ThicknessDoor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            VisBut();
         }
 
         /// <summary>
@@ -82,10 +65,13 @@ namespace KompasLib
                 }
             }
 
-            var door = new DoorParameters(heightDoor, widthDoor, weigthDoor, yKey, yEye, isOpen);
+            var door = new DoorParameters(weigthDoor, yKey,
+                yEye, isOpen, heightDoor, widthDoor);
 
             if (_kompas3D.Kompas3D == null)
+            {
                 _kompas3D.RunKompas();
+            }
 
             _kompas3D.BuildDoor(door);
         }
@@ -103,8 +89,8 @@ namespace KompasLib
             closeAnimalDoor.Enabled = false;
             closeAnimalDoor.Checked = true;
             checkAnimal.Checked = false;
-            pushToKompas.Enabled = false;
             test100.Enabled = false;
+            VisibleButton();
         }
 
         /// <summary>
@@ -128,9 +114,8 @@ namespace KompasLib
                 FileStream file = new FileStream(fileName, FileMode.Append);
                 StreamWriter writer = new StreamWriter(file);
 
-                string elapsedTime = String.Format("{0}",
-                    stopWatch.Elapsed.Milliseconds + stopWatch.Elapsed.Seconds * 1000 +
-                    stopWatch.Elapsed.Minutes * 60 * 1000);
+                string elapsedTime =
+                    $"{stopWatch.Elapsed.Milliseconds + stopWatch.Elapsed.Seconds*1000 + stopWatch.Elapsed.Minutes*60*1000}";
                 writer.Write("({0};{1})", i, elapsedTime);
                 writer.Close();
                 stopWatch.Reset();
@@ -142,9 +127,10 @@ namespace KompasLib
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void checkAnimal_CheckedChanged(object sender, EventArgs e)
+        private void checkAnimal_CheckedChanged(object sender,
+            EventArgs e)
         {
-            if (checkAnimal.Checked == true)
+            if (checkAnimal.Checked)
             {
                 openAnimalDoor.Enabled = true;
                 closeAnimalDoor.Enabled = true;
@@ -157,96 +143,12 @@ namespace KompasLib
         }
 
         /// <summary>
-        /// Валидация дверного глазка
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void doorPeephole_KeyPress_1(object sender, KeyPressEventArgs e)
-        {
-            try
-            {
-                int.Parse(doorPeephole.SelectionLength.ToString());
-            }
-            catch
-            {
-                throw new ArgumentException("Высота глазка не указана!");
-            }
-        }
-
-        /// <summary>
-        /// Валидация дверной ручки
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void doorHandle_KeyPress_1(object sender, KeyPressEventArgs e)
-        {
-            try
-            {
-                int.Parse(doorPeephole.SelectionLength.ToString());
-            }
-            catch
-            {
-                throw new ArgumentException("Высота ручки не указана!");
-            }
-        }
-
-        /// <summary>
-        /// Валидация толщины двери
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void doorThickness_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            try
-            {
-                int.Parse(doorPeephole.SelectionLength.ToString());
-            }
-            catch
-            {
-                throw new ArgumentException("Толщина двери не указана!");
-            }
-        }
-
-        /// <summary>
-        /// Валидация ширины двери
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void doorWidth_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            try
-            {
-                int.Parse(doorPeephole.SelectionLength.ToString());
-            }
-            catch
-            {
-                throw new ArgumentException("Ширина двери не указана!");
-            }
-        }
-
-        /// <summary>
-        /// Валидация высоты двери
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void doorHeight_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            try
-            {
-                int.Parse(doorPeephole.SelectionLength.ToString());
-            }
-            catch
-            {
-                throw new ArgumentException("Высота двери не указана!");
-            }
-        }
-
-        /// <summary>
         /// Быстрое заполенение формы
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void demoVariable_Click_1(object sender, EventArgs e)
+        private void demoVariable_Click_1(object sender,
+            EventArgs e)
         {
             doorHeight.SelectedIndex = 1;
             doorWidth.SelectedIndex = 1;

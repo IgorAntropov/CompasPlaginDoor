@@ -77,8 +77,7 @@
             this.doorHeight.Name = "doorHeight";
             this.doorHeight.Size = new System.Drawing.Size(160, 24);
             this.doorHeight.TabIndex = 2;
-            this.doorHeight.SelectedIndexChanged += new System.EventHandler(this.HeightDoor_SelectedIndexChanged);
-            this.doorHeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.doorHeight_KeyPress);
+            this.doorHeight.SelectedIndexChanged += new System.EventHandler(this.MainForm_Load_1);
             // 
             // doorWidth
             // 
@@ -95,8 +94,7 @@
             this.doorWidth.Name = "doorWidth";
             this.doorWidth.Size = new System.Drawing.Size(160, 24);
             this.doorWidth.TabIndex = 3;
-            this.doorWidth.SelectedIndexChanged += new System.EventHandler(this.WidthDoor_SelectedIndexChanged);
-            this.doorWidth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.doorWidth_KeyPress);
+            this.doorWidth.SelectedIndexChanged += new System.EventHandler(this.MainForm_Load_1);
             // 
             // doorThickness
             // 
@@ -114,8 +112,7 @@
             this.doorThickness.Name = "doorThickness";
             this.doorThickness.Size = new System.Drawing.Size(160, 24);
             this.doorThickness.TabIndex = 4;
-            this.doorThickness.SelectedIndexChanged += new System.EventHandler(this.ThicknessDoor_SelectedIndexChanged);
-            this.doorThickness.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.doorThickness_KeyPress);
+            this.doorThickness.SelectedIndexChanged += new System.EventHandler(this.MainForm_Load_1);
             // 
             // doorHandle
             // 
@@ -146,8 +143,7 @@
             this.doorHandle.Name = "doorHandle";
             this.doorHandle.Size = new System.Drawing.Size(160, 24);
             this.doorHandle.TabIndex = 5;
-            this.doorHandle.SelectedIndexChanged += new System.EventHandler(this.DoorHandle_SelectedIndexChanged);
-            this.doorHandle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.doorHandle_KeyPress_1);
+            this.doorHandle.SelectedIndexChanged += new System.EventHandler(this.MainForm_Load_1);
             // 
             // doorPeephole
             // 
@@ -167,8 +163,7 @@
             this.doorPeephole.Name = "doorPeephole";
             this.doorPeephole.Size = new System.Drawing.Size(160, 24);
             this.doorPeephole.TabIndex = 6;
-            this.doorPeephole.SelectedIndexChanged += new System.EventHandler(this.DoorPeephole_SelectedIndexChanged);
-            this.doorPeephole.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.doorPeephole_KeyPress_1);
+            this.doorPeephole.SelectedIndexChanged += new System.EventHandler(this.MainForm_Load_1);
             // 
             // doorH
             // 
