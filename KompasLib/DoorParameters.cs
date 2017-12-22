@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace KompasLib
 {
@@ -41,13 +40,7 @@ namespace KompasLib
                 _heightDoor = value;
             }
         }
-
-        /// <summary>
-        /// Валидация
-        /// </summary>
-        [Required] [Range(1900, 2200)]
-        private int _heightDoor;
-
+        
         /// <summary>
         /// Гет сет ширины + валидация
         /// </summary>
@@ -64,13 +57,7 @@ namespace KompasLib
                 _widthDoor = value;
             }
         }
-
-        /// <summary>
-        /// Валидация
-        /// </summary>
-        [Required] [Range(800, 900)]
-        private int _widthDoor;
-
+        
         /// <summary>
         /// Гет сет толщины + валидация
         /// </summary>
@@ -87,13 +74,7 @@ namespace KompasLib
                 _weigthDoor = value;
             }
         }
-
-        /// <summary>
-        /// Валидация
-        /// </summary>
-        [Required] [Range(50, 100)]
-        private int _weigthDoor;
-
+        
         /// <summary>
         /// Гет сет ручки + валидация
         /// </summary>
@@ -110,13 +91,7 @@ namespace KompasLib
                 _yKey = value;
             }
         }
-
-        /// <summary>
-        /// Валидация
-        /// </summary>
-        [Required] [Range(100, 900)]
-        private int _yKey;
-
+        
         /// <summary>
         /// Гет сет глазка + валидация
         /// </summary>
@@ -133,25 +108,35 @@ namespace KompasLib
                 _yEye = value;
             }
         }
-
-        /// <summary>
-        /// Валидация
-        /// </summary>
-        [Required] [Range(900, 1600)]
-        private int _yEye;
-
-        /// <summary>
-        /// Объект переменной заслонки
-        /// </summary>
-        private bool? _isOpen;
-
+        
         /// <summary>
         /// Гет сеттер переменной заслонки
         /// </summary>
-        public bool? IsOpen
-        {
-            get { return _isOpen; }
-            set { _isOpen = value; }
-        }
+        public bool? IsOpen { get; set; }
+
+        /// <summary>
+        /// Обращение
+        /// </summary>
+        private int _heightDoor;
+
+        /// <summary>
+        /// Обращение
+        /// </summary>
+        private int _yEye;
+
+        /// <summary>
+        /// Обращение
+        /// </summary>
+        private int _yKey;
+
+        /// <summary>
+        /// Обращение
+        /// </summary>
+        private int _weigthDoor;
+
+        /// <summary>
+        /// Обращение
+        /// </summary>
+        private int _widthDoor;
     }
 }

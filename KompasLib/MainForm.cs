@@ -37,6 +37,12 @@ namespace KompasLib
             {
                 pushToKompas.Enabled = true;
             }
+            if (checkAnimal.Checked == false)
+            {
+                openAnimalDoor.Enabled = false;
+                closeAnimalDoor.Enabled = false;
+                closeAnimalDoor.Checked = true;
+            }
         }
 
         /// <summary>
@@ -83,12 +89,6 @@ namespace KompasLib
         /// <param name="e"></param>
         private void MainForm_Load_1(object sender, EventArgs e)
         {
-            pictureBox.Load(
-                "C://Users//Igor'//Desktop//учеба//ОРСАПР//ORSAPR//KompasLib//1.jpg");
-            openAnimalDoor.Enabled = false;
-            closeAnimalDoor.Enabled = false;
-            closeAnimalDoor.Checked = true;
-            checkAnimal.Checked = false;
             test100.Enabled = false;
             VisibleButton();
         }
@@ -130,16 +130,8 @@ namespace KompasLib
         private void checkAnimal_CheckedChanged(object sender,
             EventArgs e)
         {
-            if (checkAnimal.Checked)
-            {
-                openAnimalDoor.Enabled = true;
-                closeAnimalDoor.Enabled = true;
-            }
-            else
-            {
-                openAnimalDoor.Enabled = false;
-                closeAnimalDoor.Enabled = false;
-            }
+            openAnimalDoor.Enabled = checkAnimal.Checked;
+            closeAnimalDoor.Enabled = checkAnimal.Checked;
         }
 
         /// <summary>

@@ -51,7 +51,7 @@
             // 
             // pushToKompas
             // 
-            this.pushToKompas.Location = new System.Drawing.Point(88, 310);
+            this.pushToKompas.Location = new System.Drawing.Point(88, 268);
             this.pushToKompas.Margin = new System.Windows.Forms.Padding(4);
             this.pushToKompas.Name = "pushToKompas";
             this.pushToKompas.Size = new System.Drawing.Size(161, 38);
@@ -72,7 +72,7 @@
             "2100",
             "2150",
             "2200"});
-            this.doorHeight.Location = new System.Drawing.Point(191, 55);
+            this.doorHeight.Location = new System.Drawing.Point(191, 13);
             this.doorHeight.Margin = new System.Windows.Forms.Padding(4);
             this.doorHeight.Name = "doorHeight";
             this.doorHeight.Size = new System.Drawing.Size(160, 24);
@@ -89,7 +89,7 @@
             "850",
             "875",
             "900"});
-            this.doorWidth.Location = new System.Drawing.Point(191, 89);
+            this.doorWidth.Location = new System.Drawing.Point(191, 47);
             this.doorWidth.Margin = new System.Windows.Forms.Padding(4);
             this.doorWidth.Name = "doorWidth";
             this.doorWidth.Size = new System.Drawing.Size(160, 24);
@@ -107,7 +107,7 @@
             "80",
             "90",
             "100"});
-            this.doorThickness.Location = new System.Drawing.Point(191, 122);
+            this.doorThickness.Location = new System.Drawing.Point(191, 80);
             this.doorThickness.Margin = new System.Windows.Forms.Padding(4);
             this.doorThickness.Name = "doorThickness";
             this.doorThickness.Size = new System.Drawing.Size(160, 24);
@@ -138,7 +138,7 @@
             "700",
             "800",
             "900"});
-            this.doorHandle.Location = new System.Drawing.Point(191, 155);
+            this.doorHandle.Location = new System.Drawing.Point(191, 113);
             this.doorHandle.Margin = new System.Windows.Forms.Padding(4);
             this.doorHandle.Name = "doorHandle";
             this.doorHandle.Size = new System.Drawing.Size(160, 24);
@@ -158,7 +158,7 @@
             "1400",
             "1500",
             "1600"});
-            this.doorPeephole.Location = new System.Drawing.Point(191, 188);
+            this.doorPeephole.Location = new System.Drawing.Point(191, 146);
             this.doorPeephole.Margin = new System.Windows.Forms.Padding(4);
             this.doorPeephole.Name = "doorPeephole";
             this.doorPeephole.Size = new System.Drawing.Size(160, 24);
@@ -168,7 +168,7 @@
             // doorH
             // 
             this.doorH.AutoSize = true;
-            this.doorH.Location = new System.Drawing.Point(11, 65);
+            this.doorH.Location = new System.Drawing.Point(11, 23);
             this.doorH.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.doorH.Name = "doorH";
             this.doorH.Size = new System.Drawing.Size(100, 17);
@@ -178,7 +178,7 @@
             // doorW
             // 
             this.doorW.AutoSize = true;
-            this.doorW.Location = new System.Drawing.Point(9, 98);
+            this.doorW.Location = new System.Drawing.Point(9, 56);
             this.doorW.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.doorW.Name = "doorW";
             this.doorW.Size = new System.Drawing.Size(102, 17);
@@ -188,7 +188,7 @@
             // doorT
             // 
             this.doorT.AutoSize = true;
-            this.doorT.Location = new System.Drawing.Point(9, 132);
+            this.doorT.Location = new System.Drawing.Point(9, 90);
             this.doorT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.doorT.Name = "doorT";
             this.doorT.Size = new System.Drawing.Size(111, 17);
@@ -198,7 +198,7 @@
             // doorHa
             // 
             this.doorHa.AutoSize = true;
-            this.doorHa.Location = new System.Drawing.Point(9, 165);
+            this.doorHa.Location = new System.Drawing.Point(9, 123);
             this.doorHa.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.doorHa.Name = "doorHa";
             this.doorHa.Size = new System.Drawing.Size(158, 17);
@@ -208,7 +208,7 @@
             // doorP
             // 
             this.doorP.AutoSize = true;
-            this.doorP.Location = new System.Drawing.Point(9, 198);
+            this.doorP.Location = new System.Drawing.Point(9, 156);
             this.doorP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.doorP.Name = "doorP";
             this.doorP.Size = new System.Drawing.Size(168, 17);
@@ -217,17 +217,18 @@
             // 
             // pictureBox
             // 
-            this.pictureBox.Location = new System.Drawing.Point(364, 15);
+            this.pictureBox.Image = global::KompasLib.Properties.Resources._1;
+            this.pictureBox.Location = new System.Drawing.Point(390, 23);
             this.pictureBox.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(327, 385);
+            this.pictureBox.Size = new System.Drawing.Size(244, 313);
             this.pictureBox.TabIndex = 12;
             this.pictureBox.TabStop = false;
             // 
             // openAnimalDoor
             // 
             this.openAnimalDoor.AutoSize = true;
-            this.openAnimalDoor.Location = new System.Drawing.Point(191, 231);
+            this.openAnimalDoor.Location = new System.Drawing.Point(191, 189);
             this.openAnimalDoor.Margin = new System.Windows.Forms.Padding(4);
             this.openAnimalDoor.Name = "openAnimalDoor";
             this.openAnimalDoor.Size = new System.Drawing.Size(141, 21);
@@ -239,7 +240,7 @@
             // closeAnimalDoor
             // 
             this.closeAnimalDoor.AutoSize = true;
-            this.closeAnimalDoor.Location = new System.Drawing.Point(191, 260);
+            this.closeAnimalDoor.Location = new System.Drawing.Point(191, 218);
             this.closeAnimalDoor.Margin = new System.Windows.Forms.Padding(4);
             this.closeAnimalDoor.Name = "closeAnimalDoor";
             this.closeAnimalDoor.Size = new System.Drawing.Size(141, 21);
@@ -251,7 +252,7 @@
             // checkAnimal
             // 
             this.checkAnimal.AutoSize = true;
-            this.checkAnimal.Location = new System.Drawing.Point(13, 233);
+            this.checkAnimal.Location = new System.Drawing.Point(13, 191);
             this.checkAnimal.Margin = new System.Windows.Forms.Padding(4);
             this.checkAnimal.Name = "checkAnimal";
             this.checkAnimal.Size = new System.Drawing.Size(151, 21);
@@ -262,7 +263,7 @@
             // 
             // demoVariable
             // 
-            this.demoVariable.Location = new System.Drawing.Point(14, 356);
+            this.demoVariable.Location = new System.Drawing.Point(14, 314);
             this.demoVariable.Margin = new System.Windows.Forms.Padding(4);
             this.demoVariable.Name = "demoVariable";
             this.demoVariable.Size = new System.Drawing.Size(150, 33);
@@ -273,7 +274,7 @@
             // 
             // test100
             // 
-            this.test100.Location = new System.Drawing.Point(175, 356);
+            this.test100.Location = new System.Drawing.Point(175, 314);
             this.test100.Margin = new System.Windows.Forms.Padding(4);
             this.test100.Name = "test100";
             this.test100.Size = new System.Drawing.Size(162, 33);
@@ -288,7 +289,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(704, 405);
+            this.ClientSize = new System.Drawing.Size(658, 357);
             this.Controls.Add(this.test100);
             this.Controls.Add(this.demoVariable);
             this.Controls.Add(this.checkAnimal);
@@ -311,7 +312,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximumSize = new System.Drawing.Size(726, 456);
-            this.MinimumSize = new System.Drawing.Size(726, 456);
+            this.MinimumSize = new System.Drawing.Size(680, 408);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Бибилиотека \"Входная дверь\" для КОМПАС-3D v17";

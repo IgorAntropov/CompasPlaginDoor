@@ -11,28 +11,23 @@ namespace KompasLib
         /// <summary>
         /// Конструктор
         /// </summary>
-        public KompasObject Kompas3D => _kompas;
-
-        /// <summary>
-        /// Объект компас
-        /// </summary>
-        private KompasObject _kompas;
+        public KompasObject Kompas3D { get; private set; }
 
         /// <summary>
         /// Запуск компаса
         /// </summary>
         public void RunKompas()
         {
-            if (_kompas == null)
+            if (Kompas3D == null)
             {
                 var t = Type.GetTypeFromProgID("KOMPAS.Application.5");
-                _kompas = (KompasObject) Activator.CreateInstance(t);
+                Kompas3D = (KompasObject) Activator.CreateInstance(t);
             }
             RunningKompas();
-            if (_kompas != null)
+            if (Kompas3D != null)
             {
-                _kompas.Visible = true;
-                _kompas.ActivateControllerAPI();
+                Kompas3D.Visible = true;
+                Kompas3D.ActivateControllerAPI();
             }
         }
 
@@ -44,7 +39,7 @@ namespace KompasLib
         {
             RunningKompas();
 
-            ksDocument3D doc = _kompas.Document3D();
+            ksDocument3D doc = Kompas3D.Document3D();
             doc.Create();
 
             ksPart doorPart = doc.GetPart((short) 
@@ -169,8 +164,8 @@ namespace KompasLib
             floorKeyDifinition.SetPlane(eyePlaneOffset);
             floorKeySketch.Create();
             ksDocument2D floorKey = floorKeyDifinition.BeginEdit();
-            DrawRectangle(floorKey, doorParameters.YKey/2.0, 
-                doorParameters.WidthDoor - 470, 18, 18,
+            DrawRectangle(floorKey, doorParameters.YKey / 2.0, 
+                doorParameters.WidthDoor - 490, 18, 18,
                 null);
             floorKeyDifinition.EndEdit();
             Extrude(doorPart, floorKeySketch, 25, 
@@ -200,8 +195,8 @@ namespace KompasLib
             keySketchDefinition.SetPlane(keyPlaneOffset);
             keySketch.Create();
             ksDocument2D key = keySketchDefinition.BeginEdit();
-            DrawRectangle(key, doorParameters.YKey/2.0, 
-                doorParameters.WidthDoor - 430, 200, 26, -90);
+            DrawRectangle(key, doorParameters.YKey / 2.0, 
+                doorParameters.WidthDoor - 450, 200, 26, -90);
             keySketchDefinition.EndEdit();
             Extrude(doorPart, keySketch, 5, 
                 (short) Direction_Type.dtNormal);
@@ -221,7 +216,7 @@ namespace KompasLib
             double width,
             double height, double? ang)
         {
-            var param = (ksRectangleParam) _kompas.GetParamStruct((short) 
+            var param = (ksRectangleParam) Kompas3D.GetParamStruct((short) 
                 StructType2DEnum.ko_RectangleParam);
             param.x = xStart;
             param.y = yStart;
@@ -280,15 +275,15 @@ namespace KompasLib
         {
             try
             {
-                if (_kompas != null)
+                if (Kompas3D != null)
                 {
-                    _kompas.Visible = true;
-                    _kompas.ActivateControllerAPI();
+                    Kompas3D.Visible = true;
+                    Kompas3D.ActivateControllerAPI();
                 }
             }
             catch (COMException)
             {
-                _kompas = null;
+                Kompas3D = null;
                 RunKompas();
             }
         }
