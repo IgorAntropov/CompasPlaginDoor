@@ -5,14 +5,14 @@ namespace KompasLib
     public class DoorParameters
     {
         /// <summary>
-        /// Переприсвоение
+        /// Создаёт экземпляр класса <see cref="DoorParameters"/>
         /// </summary>
-        /// <param name="weigthDoor"></param>
-        /// <param name="yKey"></param>
-        /// <param name="yEye"></param>
-        /// <param name="isOpen"></param>
-        /// <param name="heightDoor"></param>
-        /// <param name="widthDoor"></param>
+        /// <param name="weigthDoor">Толщина двери</param>
+        /// <param name="yKey">Дверная ручка</param>
+        /// <param name="yEye">Дверной глазок</param>
+        /// <param name="isOpen">Собачья заслонка</param>
+        /// <param name="heightDoor">Высота двери</param>
+        /// <param name="widthDoor">Ширина двери</param>
         public DoorParameters(int weigthDoor, int yKey,
             int yEye, bool? isOpen, int heightDoor, int widthDoor)
         {

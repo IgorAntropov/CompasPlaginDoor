@@ -52,11 +52,16 @@ namespace KompasLib
         /// <param name="e"></param>
         private void pushToKompas_Click(object sender, EventArgs e)
         {
-            var heightDoor = int.Parse(doorHeight.Items[doorHeight.SelectedIndex].ToString());
-            var widthDoor = int.Parse(doorWidth.Items[doorWidth.SelectedIndex].ToString());
-            var weigthDoor = int.Parse(doorThickness.Items[doorThickness.SelectedIndex].ToString());
-            var yKey = int.Parse(doorHandle.Items[doorHandle.SelectedIndex].ToString());
-            var yEye = int.Parse(doorPeephole.Items[doorPeephole.SelectedIndex].ToString());
+            var heightDoor = int.Parse(doorHeight.Items
+                [doorHeight.SelectedIndex].ToString());
+            var widthDoor = int.Parse(doorWidth.Items
+                [doorWidth.SelectedIndex].ToString());
+            var weigthDoor = int.Parse(doorThickness.Items
+                [doorThickness.SelectedIndex].ToString());
+            var yKey = int.Parse(doorHandle.Items
+                [doorHandle.SelectedIndex].ToString());
+            var yEye = int.Parse(doorPeephole.Items
+                [doorPeephole.SelectedIndex].ToString());
             bool? isOpen = null;
 
             if (checkAnimal.Checked)
@@ -92,7 +97,6 @@ namespace KompasLib
             test100.Visible = false;
             demoVariable.Visible = false;
             VisibleButton();
-            pictureBox.Load("C:/Users/Igor'/Desktop/учеба/ОРСАПР/ORSAPR/KompasLib/1.jpg");
         }
 
         /// <summary>
@@ -104,7 +108,8 @@ namespace KompasLib
         {
             Stopwatch stopWatch = new Stopwatch();
 
-            string fileName = DateTime.Now.ToString("yyyy.MM.dd_HH-mm-ss-") + "test.txt";
+            string fileName = DateTime.Now.ToString("yyyy.MM.dd_HH-mm-ss-") 
+                + "test.txt";
             demoVariable_Click_1(sender, e);
             for (int i = 0; i < 101; i++)
             {
