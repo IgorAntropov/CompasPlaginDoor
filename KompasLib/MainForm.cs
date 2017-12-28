@@ -76,7 +76,7 @@ namespace KompasLib
 
             if (_kompas3D.Kompas3D == null)
             {
-                _kompas3D.RunKompas();
+                _kompas3D.StartKompas();
             }
 
             _kompas3D.BuildDoor(door);
@@ -89,8 +89,10 @@ namespace KompasLib
         /// <param name="e"></param>
         private void MainForm_Load_1(object sender, EventArgs e)
         {
-            test100.Enabled = false;
+            test100.Visible = false;
+            demoVariable.Visible = false;
             VisibleButton();
+            pictureBox.Load("C:/Users/Igor'/Desktop/учеба/ОРСАПР/ORSAPR/KompasLib/1.jpg");
         }
 
         /// <summary>

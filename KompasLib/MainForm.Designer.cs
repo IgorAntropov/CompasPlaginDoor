@@ -40,12 +40,12 @@
             this.doorT = new System.Windows.Forms.Label();
             this.doorHa = new System.Windows.Forms.Label();
             this.doorP = new System.Windows.Forms.Label();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.openAnimalDoor = new System.Windows.Forms.RadioButton();
             this.closeAnimalDoor = new System.Windows.Forms.RadioButton();
             this.checkAnimal = new System.Windows.Forms.CheckBox();
             this.demoVariable = new System.Windows.Forms.Button();
             this.test100 = new System.Windows.Forms.Button();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -215,16 +215,6 @@
             this.doorP.TabIndex = 11;
             this.doorP.Text = "Высота дверного глазка";
             // 
-            // pictureBox
-            // 
-            this.pictureBox.Image = global::KompasLib.Properties.Resources._1;
-            this.pictureBox.Location = new System.Drawing.Point(390, 23);
-            this.pictureBox.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(244, 313);
-            this.pictureBox.TabIndex = 12;
-            this.pictureBox.TabStop = false;
-            // 
             // openAnimalDoor
             // 
             this.openAnimalDoor.AutoSize = true;
@@ -282,6 +272,16 @@
             this.test100.Text = "Нагрузочный тест";
             this.test100.UseVisualStyleBackColor = true;
             this.test100.Click += new System.EventHandler(this.test100_Click_1);
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.Image = global::KompasLib.Properties.Resources._1;
+            this.pictureBox.Location = new System.Drawing.Point(381, 13);
+            this.pictureBox.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(244, 313);
+            this.pictureBox.TabIndex = 12;
+            this.pictureBox.TabStop = false;
             // 
             // MainForm
             // 

@@ -16,14 +16,14 @@ namespace KompasLib
         /// <summary>
         /// Запуск компаса
         /// </summary>
-        public void RunKompas()
+        public void StartKompas()
         {
             if (Kompas3D == null)
             {
                 var t = Type.GetTypeFromProgID("KOMPAS.Application.5");
                 Kompas3D = (KompasObject) Activator.CreateInstance(t);
             }
-            RunningKompas();
+            ConnectToKompas();
             if (Kompas3D != null)
             {
                 Kompas3D.Visible = true;
@@ -37,7 +37,7 @@ namespace KompasLib
         /// <param name="doorParameters"></param>
         public void BuildDoor(DoorParameters doorParameters)
         {
-            RunningKompas();
+            ConnectToKompas();
 
             ksDocument3D doc = Kompas3D.Document3D();
             doc.Create();
@@ -74,13 +74,15 @@ namespace KompasLib
         {
             ksEntity eyePlaneOffset = doorPart.NewEntity((short) 
                 Obj3dType.o3d_planeOffset);
-            ksPlaneOffsetDefinition eyeDefinition = eyePlaneOffset.GetDefinition();
+            ksPlaneOffsetDefinition eyeDefinition = 
+                eyePlaneOffset.GetDefinition();
             eyeDefinition.SetPlane(planeXoY);
             eyeDefinition.offset = doorParameters.WeigthDoor;
             eyePlaneOffset.Create();
             ksEntity eyeSketch = doorPart.NewEntity((short) 
                 Obj3dType.o3d_sketch);
-            ksSketchDefinition eyeSketchDefinition = eyeSketch.GetDefinition();
+            ksSketchDefinition eyeSketchDefinition = 
+                eyeSketch.GetDefinition();
             eyeSketchDefinition.SetPlane(eyePlaneOffset);
             eyeSketch.Create();
             ksDocument2D eye = eyeSketchDefinition.BeginEdit();
@@ -107,11 +109,13 @@ namespace KompasLib
             {
                 ksEntity animalDoorHoleSketch = doorPart.NewEntity((short) 
                     Obj3dType.o3d_sketch);
-                ksSketchDefinition animalDoorHoleSketchDefinition = animalDoorHoleSketch.GetDefinition();
+                ksSketchDefinition animalDoorHoleSketchDefinition = 
+                    animalDoorHoleSketch.GetDefinition();
                 animalDoorHoleSketchDefinition.SetPlane(eyePlaneOffset);
                 animalDoorHoleSketch.Create();
 
-                ksDocument2D animalDoorHole = animalDoorHoleSketchDefinition.BeginEdit();
+                ksDocument2D animalDoorHole = 
+                    animalDoorHoleSketchDefinition.BeginEdit();
                 DrawRectangle(animalDoorHole, x, y, 
                     animalHoleHeight, 
                     animalHoleHeight, null);
@@ -121,11 +125,13 @@ namespace KompasLib
 
                 ksEntity animalDoorSketch = doorPart.NewEntity((short) 
                     Obj3dType.o3d_sketch);
-                ksSketchDefinition animalDoorSketchDefinition = animalDoorSketch.GetDefinition();
+                ksSketchDefinition animalDoorSketchDefinition = 
+                    animalDoorSketch.GetDefinition();
                 animalDoorSketchDefinition.SetPlane(eyePlaneOffset);
                 animalDoorSketch.Create();
 
-                ksDocument2D animalDoor = animalDoorSketchDefinition.BeginEdit();
+                ksDocument2D animalDoor = 
+                    animalDoorSketchDefinition.BeginEdit();
                 DrawRectangle(animalDoor, x + animalHoleHeight, y, 
                     animalHoleHeight/10.0, animalHoleHeight,
                     null);
@@ -137,11 +143,13 @@ namespace KompasLib
             {
                 ksEntity animalDoorHoleSketch = doorPart.NewEntity((short) 
                     Obj3dType.o3d_sketch);
-                ksSketchDefinition animalDoorHoleSketchDefinition = animalDoorHoleSketch.GetDefinition();
+                ksSketchDefinition animalDoorHoleSketchDefinition =
+                    animalDoorHoleSketch.GetDefinition();
                 animalDoorHoleSketchDefinition.SetPlane(eyePlaneOffset);
                 animalDoorHoleSketch.Create();
 
-                ksDocument2D animalDoorHole = animalDoorHoleSketchDefinition.BeginEdit();
+                ksDocument2D animalDoorHole =
+                    animalDoorHoleSketchDefinition.BeginEdit();
                 DrawRectangle(animalDoorHole, x, y, animalHoleHeight, 
                     animalHoleHeight, null);
                 animalDoorHoleSketchDefinition.EndEdit();
@@ -160,7 +168,8 @@ namespace KompasLib
         {
             ksEntity floorKeySketch = doorPart.NewEntity((short) 
                 Obj3dType.o3d_sketch);
-            ksSketchDefinition floorKeyDifinition = floorKeySketch.GetDefinition();
+            ksSketchDefinition floorKeyDifinition = 
+                floorKeySketch.GetDefinition();
             floorKeyDifinition.SetPlane(eyePlaneOffset);
             floorKeySketch.Create();
             ksDocument2D floorKey = floorKeyDifinition.BeginEdit();
@@ -185,13 +194,15 @@ namespace KompasLib
         {
             ksEntity keyPlaneOffset = doorPart.NewEntity((short) 
                 Obj3dType.o3d_planeOffset);
-            ksPlaneOffsetDefinition pod5 = keyPlaneOffset.GetDefinition();
+            ksPlaneOffsetDefinition pod5 = 
+                keyPlaneOffset.GetDefinition();
             pod5.SetPlane(eyePlaneOffset);
             pod5.offset = 25;
             keyPlaneOffset.Create();
             ksEntity keySketch = doorPart.NewEntity((short) 
                 Obj3dType.o3d_sketch);
-            ksSketchDefinition keySketchDefinition = keySketch.GetDefinition();
+            ksSketchDefinition keySketchDefinition = 
+                keySketch.GetDefinition();
             keySketchDefinition.SetPlane(keyPlaneOffset);
             keySketch.Create();
             ksDocument2D key = keySketchDefinition.BeginEdit();
@@ -269,9 +280,9 @@ namespace KompasLib
         }
 
         /// <summary>
-        /// Запуск в 1 окне
+        /// Запуск компаса в 1 окне
         /// </summary>
-        private void RunningKompas()
+        private void ConnectToKompas()
         {
             try
             {
@@ -284,7 +295,7 @@ namespace KompasLib
             catch (COMException)
             {
                 Kompas3D = null;
-                RunKompas();
+                StartKompas();
             }
         }
     }

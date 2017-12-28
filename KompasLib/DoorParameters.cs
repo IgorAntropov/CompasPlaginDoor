@@ -23,7 +23,7 @@ namespace KompasLib
             YEye = yEye;
             IsOpen = isOpen;
         }
-        
+
         /// <summary>
         /// Гет сет высоты + валидация
         /// </summary>
@@ -36,11 +36,11 @@ namespace KompasLib
                 {
                     throw new ArgumentException("Высота двери " +
                                                 "должна быть от 1900 до 2200!");
-                }  
+                }
                 _heightDoor = value;
             }
         }
-        
+
         /// <summary>
         /// Гет сет ширины + валидация
         /// </summary>
@@ -57,7 +57,7 @@ namespace KompasLib
                 _widthDoor = value;
             }
         }
-        
+
         /// <summary>
         /// Гет сет толщины + валидация
         /// </summary>
@@ -74,7 +74,7 @@ namespace KompasLib
                 _weigthDoor = value;
             }
         }
-        
+
         /// <summary>
         /// Гет сет ручки + валидация
         /// </summary>
@@ -91,7 +91,7 @@ namespace KompasLib
                 _yKey = value;
             }
         }
-        
+
         /// <summary>
         /// Гет сет глазка + валидация
         /// </summary>
@@ -104,7 +104,7 @@ namespace KompasLib
                 {
                     throw new ArgumentException("Высота глазка " +
                                                 "должна быть от 900 до 1600!");
-                }   
+                }
                 _yEye = value;
             }
         }
