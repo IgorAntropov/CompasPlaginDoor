@@ -8,9 +8,9 @@ namespace KompasLib
         /// Создаёт экземпляр класса <see cref="DoorParameters"/>
         /// </summary>
         /// <param name="weigthDoor">Толщина двери</param>
-        /// <param name="yKey">Дверная ручка</param>
-        /// <param name="yEye">Дверной глазок</param>
-        /// <param name="isOpen">Собачья заслонка</param>
+        /// <param name="yKey">Высота дверной ручки</param>
+        /// <param name="yEye">Высота дверного глазка</param>
+        /// <param name="isOpen">Наличие собачьей заслонки</param>
         /// <param name="heightDoor">Высота двери</param>
         /// <param name="widthDoor">Ширина двери</param>
         public DoorParameters(int weigthDoor, int yKey,
